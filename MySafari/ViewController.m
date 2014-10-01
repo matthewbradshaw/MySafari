@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate>
+@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 
@@ -65,6 +65,19 @@
 - (IBAction)onReloadButtonPressed:(id)sender {
     [self.webView reload];
 }
+
+- (IBAction)onPlusButtonPressed:(id)sender {
+    UIAlertView * alertView = [[UIAlertView alloc] init];
+    alertView.delegate = self;
+    [alertView addButtonWithTitle: @"Coming Soon"];
+    [alertView show];
+
+}
+
+
+
+
+
 
 
 
