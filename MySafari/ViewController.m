@@ -44,7 +44,15 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    NSURL *currentURL = self.webView.request.URL;
+    NSString *currentURLString = [currentURL absoluteString];
+    self.urlTextField.text = currentURLString;
 }
+
+- (IBAction)quickClearTextField:(id)sender {
+    self.urlTextField.text = @"";
+}
+
 
 - (IBAction)onBackButtonPressed:(id)sender {
     if (self.webView.canGoBack == YES) {

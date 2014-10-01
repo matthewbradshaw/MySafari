@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,14 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sk1-io-f9C">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sk1-io-f9C">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="571"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="z9s-a2-iAd"/>
                                 </connections>
                             </webView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZN-FZ-0tb">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZN-FZ-0tb">
                                 <rect key="frame" x="16" y="50" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
@@ -31,7 +32,7 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="kfK-rA-EWi"/>
                                 </connections>
                             </textField>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="30n-gS-ZXF" userLabel="Button View">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="30n-gS-ZXF" userLabel="Button View">
                                 <rect key="frame" x="0.0" y="569" width="600" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3n-cr-yef">
@@ -70,7 +71,7 @@
                                             <action selector="onReloadButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Cte-Lh-dVc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wns-O5-u5Y">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wns-O5-u5Y">
                                         <rect key="frame" x="285" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="+">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -79,11 +80,34 @@
                                             <action selector="onPlusButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="u9x-p5-aVj"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h03-Dj-RP3">
+                                        <rect key="frame" x="345" y="2" width="46" height="30"/>
+                                        <state key="normal" title="Clear">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="quickClearTextField:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="KDY-bM-r2A"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="h03-Dj-RP3" firstAttribute="leading" secondItem="Wns-O5-u5Y" secondAttribute="trailing" constant="30" id="71p-TV-T45"/>
+                                    <constraint firstAttribute="trailing" secondItem="h03-Dj-RP3" secondAttribute="trailing" constant="209" id="hL2-fd-LzD"/>
+                                    <constraint firstAttribute="bottom" secondItem="h03-Dj-RP3" secondAttribute="bottom" constant="-1" id="vIV-Js-bl9"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1ZN-FZ-0tb" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="0lO-TS-Yz2"/>
+                            <constraint firstItem="sk1-io-f9C" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="1uS-n0-8e6"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="sk1-io-f9C" secondAttribute="bottom" constant="29" id="711-gp-dId"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sk1-io-f9C" secondAttribute="trailing" constant="-16" id="9ot-Rr-nyn"/>
+                            <constraint firstItem="sk1-io-f9C" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="JOB-MS-mq4"/>
+                            <constraint firstItem="1ZN-FZ-0tb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="RI7-bs-fx7"/>
+                            <constraint firstItem="1ZN-FZ-0tb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="Re6-vI-oUt"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="urlTextField" destination="1ZN-FZ-0tb" id="cBh-uW-g4h"/>
