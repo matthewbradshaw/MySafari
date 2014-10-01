@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 
 @end
 
@@ -19,9 +21,32 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self loadURLString:textField.text];
+    return YES;
 }
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+- (void) loadURLString: (NSString *) urlString {
+    NSURL *url = [NSURL URLWithString: urlString];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:urlRequest];
+}
+
+- (IBAction)onButtonPressed:(id)sender {
+    [self.webView goBack];
+}
+
+- (IBAction)onForwardButtonPressed:(id)sender {
+}
+
+
 
 @end
