@@ -21,8 +21,20 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void) loadURLString: (NSString *) urlString {
+    NSURL *url = [NSURL URLWithString: urlString];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:urlRequest];
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self loadURLString:textField.text];
+    if ([textField.text hasPrefix:@"http://"]) {
+        [self loadURLString:textField.text];
+    }
+    else
+    {
+        [self loadURLString: [NSString stringWithFormat:@"http://%@", textField.text ]];
+    }
     return YES;
 }
 
@@ -34,17 +46,24 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
-- (void) loadURLString: (NSString *) urlString {
-    NSURL *url = [NSURL URLWithString: urlString];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:urlRequest];
-}
-
-- (IBAction)onButtonPressed:(id)sender {
-    [self.webView goBack];
+- (IBAction)onBackButtonPressed:(id)sender {
+    if (self.webView.canGoBack == YES) {
+        [self.webView goBack];
+    }
 }
 
 - (IBAction)onForwardButtonPressed:(id)sender {
+    if (self.webView.canGoForward == YES) {
+        [self.webView goForward];
+    }
+}
+
+- (IBAction)onStopLoadingButtonPressed:(id)sender {
+    [self.webView stopLoading];
+}
+
+- (IBAction)onReloadButtonPressed:(id)sender {
+    [self.webView reload];
 }
 
 
